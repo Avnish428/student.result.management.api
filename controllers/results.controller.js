@@ -46,13 +46,7 @@ const getAllData = catchAsync(async (req, res, next) => {
     const order_by = req.query && req.query.order_by ? req.query.order_by : "id";
 
 
-    let where = {
-        [Op.or]: {
-            score: {
-                [Op.iLike]: `%${keyword ? keyword : "%"}%`,
-            },
-        },
-    };
+    let where = {};
     if (score) {
         where.score = score;
     }
