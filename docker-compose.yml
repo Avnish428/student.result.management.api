@@ -16,9 +16,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=demouser
-      - POSTGRES_PASSWORD=Admin123
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=ydcpupijjulbdw
+      - POSTGRES_PASSWORD=1bf091527567094ec723bc3b77fefe49542fa6109bc87ad1dd749ad066231edf
+      - POSTGRES_DB=d1c0o68hiac5g8
     volumes:
       - nps_data:/var/lib/postgresql/data
 

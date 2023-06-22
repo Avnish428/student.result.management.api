@@ -1,5 +1,5 @@
 const models = require("../models");
-const { students } = models;
+const { students, results } = models;
 const catchAsync = require("../utils/catchAsync");
 const { AppError } = require("../utils/appError");
 const Joi = require("joi");
@@ -147,9 +147,11 @@ const deleteDataById = catchAsync(async (req, res, next) => {
         params: { id },
     } = req;
     await students.destroy({ where: { id } });
-    res.status(201).json({
-        status: "success",
-    });
+    await results.destroy({ where: { studentId: id } })
+    await
+        res.status(201).json({
+            status: "success",
+        });
 });
 
 module.exports = {

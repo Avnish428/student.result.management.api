@@ -45,7 +45,6 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("results");
-    await queryInterface.removeConstraint('results', 'unique_studentId_courseId');
     await queryInterface.sequelize.query(
       'DROP TYPE IF EXISTS "enum_users_user_type";'
     );
