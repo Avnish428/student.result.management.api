@@ -23,13 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     Course.hasMany(models.results, {
       foreignKey: { name: "courseId", allowNull: false },
       sourceKey: "id",
-      onDelete: "CASCADE",
+      // onDelete: "CASCADE",
     });
-    models.results.belongsTo(Course, {
-      foreignKey: { name: "courseId", allowNull: false },
-      targetKey: "id",
-      onDelete: "CASCADE",
-    });
+    // models.results.belongsTo(Course, {
+    //   foreignKey: { name: "courseId", allowNull: false },
+    //   targetKey: "id",
+    //   onDelete: "CASCADE",
+    // });
   };
   return Course;
 };

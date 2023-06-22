@@ -35,16 +35,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Result.associate = (models) => {
-    Result.belongsTo(models.course, {
-      foreignKey: { name: "courseId", allowNull: false },
-      targetKey: "id",
-      onDelete: "CASCADE",
-    });
+    // Result.belongsTo(models.course, {
+    //   foreignKey: { name: "courseId", allowNull: false },
+    //   targetKey: "id",
+    //   onDelete: "CASCADE",
+    // });
+    // Result.belongsTo(models.students, {
+    //   foreignKey: { name: "studentId", allowNull: false },
+    //   targetKey: "id",
+    //   onDelete: "CASCADE",
+    // });
     Result.belongsTo(models.students, {
       foreignKey: { name: "studentId", allowNull: false },
       targetKey: "id",
       onDelete: "CASCADE",
     });
+     Result.belongsTo(models.course, {
+       foreignKey: { name: "courseId", allowNull: false },
+         targetKey: "id",
+         onDelete: "CASCADE",
+     });
   };
 
   return Result;
