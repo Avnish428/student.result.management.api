@@ -12,10 +12,20 @@ module.exports = {
       studentId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'students',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       courseId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'course',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       score: {
         type: Sequelize.ENUM("A", "B","C","D","E","F"),
@@ -29,11 +39,6 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("NOW"),
       },
-      // deletedAt: {
-      //   type: Sequelize.DATE,
-      //   allowNull: true,
-      // },
-
     });
     await queryInterface.addConstraint('results', {
       fields: ['studentId', 'courseId'],

@@ -11,10 +11,20 @@ module.exports = (sequelize, DataTypes) => {
       studentId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'students',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       courseId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'course',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       score: {
         type: DataTypes.ENUM("A", "B", "C", "D", "E", "F"),
@@ -24,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       freezeTableName: true,
       timestamps: true,
-      // paranoid: true,
       indexes: [
         {
           unique: true,

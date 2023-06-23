@@ -147,7 +147,6 @@ const deleteDataById = catchAsync(async (req, res, next) => {
         params: { id },
     } = req;
     await students.destroy({ where: { id } });
-    await results.destroy({ where: { studentId: id } })
     await
         res.status(201).json({
             status: "success",
