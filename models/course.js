@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       courseName: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
+        unique: true,
+      }
     },
     {
       freezeTableName: true,

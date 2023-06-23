@@ -24,7 +24,7 @@ const filterObj = (obj, ...allowedFields) => {
 
 const addData = catchAsync(async (req, res) => {
     const { courseName } = req.body;
-    const result = await course.create({ courseName });
+    const result = await course.create({ courseName:courseName.toLowerCase() });
     res.status(201).json({
         status: "success",
         count: result.length,

@@ -12,6 +12,7 @@ module.exports = {
       courseName: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -27,6 +28,7 @@ module.exports = {
       // },
     });
   },
+  
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("course");
     await queryInterface.sequelize.query(
