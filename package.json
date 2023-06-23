@@ -1,7 +1,7 @@
 {
-  "name": "sku-caster",
+  "name": "student-result-management",
   "version": "1.0.0",
-  "description": "Sku-Caster",
+  "description": "student-result-management",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
