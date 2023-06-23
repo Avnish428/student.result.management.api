@@ -25,6 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false,
+        isEmail: true,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -34,10 +35,10 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("NOW"),
       },
-      deletedAt: {
-        type: Sequelize.DATE,
-        allowNull: true,
-      },
+      // deletedAt: {
+      //   type: Sequelize.DATE,
+      //   allowNull: true,
+      // },
     });
   },
   async down(queryInterface, Sequelize) {

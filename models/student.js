@@ -24,12 +24,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        isEmail: true,
       },
     },
     {
       freezeTableName: true,
       timestamps: true,
-      paranoid: true,
+      // paranoid: true,
     }
   );
   Students.associate = models => {
