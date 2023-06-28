@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "cd7735e5-3a19-4c52-8eca-266b5a722307",
+		"name": "student-result-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26964481"
+	},
+	"item": [
+		{
+			"name": "students",
+			"item": [
+				{
+					"name": "Add Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"herry\",\r\n    \"familyName\":\"potter\",\r\n    \"dob\":\"07-08-1999\",\r\n    \"email\":\"herrypotter87@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/students",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/students",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/student/1",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "Add Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseName\":\"Maths\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/course",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/course",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/course/1",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "results",
+			"item": [
+				{
+					"name": "Add Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\":1,\r\n    \"studentId\":1,\r\n    \"score\":\"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/results",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/results",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Data",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "basicAuth",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://student-demo-app-b04474eab0dd.herokuapp.com/api/v1/result/1555",
+							"protocol": "https",
+							"host": [
+								"student-demo-app-b04474eab0dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"result",
+								"1555"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
