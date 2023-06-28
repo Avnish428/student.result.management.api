@@ -20,17 +20,6 @@ router
 
 router
   .route("/result/:id")
-  .get(
-    asyncHandler(validateBasicAuth()),
-    asyncHandler(resultController.getDataById)
-  )
-  .patch(
-    asyncHandler(validateBasicAuth()),
-    asyncHandler(
-      validateRequestBody(resultController.ResultJoiSchema.UpdateData)
-    ),
-    asyncHandler(resultController.updateData)
-  )
   .delete(
     asyncHandler(validateBasicAuth()),
     asyncHandler(resultController.deleteDataById)

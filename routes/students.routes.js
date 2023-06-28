@@ -22,17 +22,6 @@ router
 
 router
   .route("/student/:id")
-  .get(
-    asyncHandler(validateBasicAuth()),
-    asyncHandler(studentController.getDataById)
-  )
-  .patch(
-    asyncHandler(validateBasicAuth()),
-    asyncHandler(
-      validateRequestBody(studentController.StudentJoiSchema.UpdateData)
-    ),
-    asyncHandler(studentController.updateData)
-  )
   .delete(
     asyncHandler(validateBasicAuth()),
     asyncHandler(studentController.deleteDataById)

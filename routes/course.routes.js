@@ -21,17 +21,6 @@ router
 
 router
   .route("/course/:id")
-  .get(
-    asyncHandler(validateBasicAuth()),
-    asyncHandler(courseController.getDataById)
-  )
-  .patch(
-    asyncHandler(
-      asyncHandler(validateBasicAuth()),
-      validateRequestBody(courseController.CourseJoiSchema.UpdateData)
-    ),
-    asyncHandler(courseController.updateData)
-  )
   .delete(
     asyncHandler(validateBasicAuth()),
     asyncHandler(courseController.deleteDataById)

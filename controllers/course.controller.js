@@ -14,6 +14,7 @@ const CourseJoiSchema = {
     }).required(),
 };
 
+//add data
 const addData = catchAsync(async (req, res) => {
     const { courseName } = req.body;
     const result = await course.create({ courseName:courseName.toLowerCase() });
@@ -24,7 +25,7 @@ const addData = catchAsync(async (req, res) => {
     });
 });
 
-// get all sku-cutomer data
+// get all data
 const getAllData = catchAsync(async (req, res, next) => {
     const { courseName, keyword, include, exclude } =
         req.query;
@@ -68,46 +69,7 @@ const getAllData = catchAsync(async (req, res, next) => {
     });
 });
 
-//get specific sku customer data by id
-const getDataById = catchAsync(async (req, res, next) => {
-    const {
-        params: { id },
-    } = req;
-    const result = await course.findOne({
-        where: { id },
-    });
-    if (!result) {
-        return next(new AppError("No data found with that ID", 404));
-    }
-    res.status(201).json({
-        status: "success",
-        count: result.length,
-        data: result,
-    });
-});
-
-// update sku customer data
-const updateData = catchAsync(async (req, res, next) => {
-    const {
-        body: {
-            courseName
-        },
-        params: { id },
-    } = req;
-
-    const result = await course.update(
-        {
-            courseName
-        },
-        { where: { id } }
-    );
-    res.status(200).json({
-        status: "success",
-        data: result,
-    });
-});
-
-// delete a sku customer Data
+// delete Data
 const deleteDataById = catchAsync(async (req, res, next) => {
     const {
         params: { id },
@@ -120,9 +82,7 @@ const deleteDataById = catchAsync(async (req, res, next) => {
 
 module.exports = {
     addData,
-    updateData,
     getAllData,
-    getDataById,
     deleteDataById,
     CourseJoiSchema,
 };

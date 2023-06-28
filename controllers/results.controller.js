@@ -3,7 +3,6 @@ const { results, course, students } = models;
 const catchAsync = require("../utils/catchAsync");
 const { AppError } = require("../utils/appError");
 const Joi = require("joi");
-const { Op } = require("sequelize");
 
 const ResultJoiSchema = {
     AddData: Joi.object({
@@ -18,6 +17,7 @@ const ResultJoiSchema = {
     }).required(),
 };
 
+//add data
 const addData = catchAsync(async (req, res) => {
     const { courseId, studentId, score } = req.body;
     const result = await results.create({ courseId, studentId, score });
@@ -28,7 +28,7 @@ const addData = catchAsync(async (req, res) => {
     });
 });
 
-// get all sku-cutomer data
+// get all data
 const getAllData = catchAsync(async (req, res, next) => {
     const { score, keyword, include, exclude } =
         req.query;
@@ -72,46 +72,7 @@ const getAllData = catchAsync(async (req, res, next) => {
     });
 });
 
-//get specific sku customer data by id
-const getDataById = catchAsync(async (req, res, next) => {
-    const {
-        params: { id },
-    } = req;
-    const result = await results.findOne({
-        where: { id },
-    });
-    if (!result) {
-        return next(new AppError("No data found with that ID", 404));
-    }
-    res.status(201).json({
-        status: "success",
-        count: result.length,
-        data: result,
-    });
-});
-
-// update sku customer data
-const updateData = catchAsync(async (req, res, next) => {
-    const {
-        body: {
-            courseId, studentId, score
-        },
-        params: { id },
-    } = req;
-
-    const result = await results.update(
-        {
-            courseId, studentId, score
-        },
-        { where: { id } }
-    );
-    res.status(200).json({
-        status: "success",
-        data: result,
-    });
-});
-
-// delete a sku customer Data
+// delete Data
 const deleteDataById = catchAsync(async (req, res, next) => {
     const {
         params: { id },
@@ -124,9 +85,7 @@ const deleteDataById = catchAsync(async (req, res, next) => {
 
 module.exports = {
     addData,
-    updateData,
     getAllData,
-    getDataById,
     deleteDataById,
     ResultJoiSchema,
 };
