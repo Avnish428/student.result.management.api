@@ -1,31 +1,23 @@
 const models = require("../models");
-const { students, results } = models;
+const { students } = models;
 const catchAsync = require("../utils/catchAsync");
 const { AppError } = require("../utils/appError");
 const Joi = require("joi");
 const { Op } = require("sequelize");
 
 const StudentJoiSchema = {
-    AddData: Joi.object({
-        firstName: Joi.string().trim().normalize().optional(),
-        familyName: Joi.string().trim().normalize().optional(),
-        dob: Joi.string().trim().normalize().optional(),
-        email: Joi.string().email().trim().normalize().required(),
-    }).required(),
-    UpdateData: Joi.object({
-        firstName: Joi.string().trim().normalize().optional(),
-        familyName: Joi.string().trim().normalize().optional(),
-        dob: Joi.string().trim().normalize().optional(),
-        email: Joi.string().email().trim().normalize().required(),
-    }).required(),
-};
-
-const filterObj = (obj, ...allowedFields) => {
-    const newObj = {};
-    Object.keys(obj).forEach((el) => {
-        if (allowedFields.includes(el)) newObj[el] = obj[el];
-    });
-    return newObj;
+  AddData: Joi.object({
+    firstName: Joi.string().trim().normalize().required(),
+    familyName: Joi.string().trim().normalize().optional(),
+    dob: Joi.string().trim().normalize().optional(),
+    email: Joi.string().email().trim().normalize().required(),
+  }).required(),
+  UpdateData: Joi.object({
+    firstName: Joi.string().trim().normalize().required(),
+    familyName: Joi.string().trim().normalize().optional(),
+    dob: Joi.string().trim().normalize().optional(),
+    email: Joi.string().email().trim().normalize().required(),
+  }).required(),
 };
 
 const addData = catchAsync(async (req, res) => {
@@ -121,13 +113,6 @@ const updateData = catchAsync(async (req, res, next) => {
         params: { id },
     } = req;
 
-    // 2) Filtered out unwanted fields names that are not allowed to be updated
-    const filteredBody = filterObj(
-        req.body,
-        "firstName",
-        "familyName",
-        "email"
-    );
 
     const result = await students.update(
         {

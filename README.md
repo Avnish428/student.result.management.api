@@ -1,4 +1,4 @@
-# skucaster-backend
+# student-result-management
 
 1. Run npm install for installing dependencies. 
 2. Change environment variables and node_env according to requirement.

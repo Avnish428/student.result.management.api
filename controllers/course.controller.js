@@ -14,14 +14,6 @@ const CourseJoiSchema = {
     }).required(),
 };
 
-const filterObj = (obj, ...allowedFields) => {
-    const newObj = {};
-    Object.keys(obj).forEach((el) => {
-        if (allowedFields.includes(el)) newObj[el] = obj[el];
-    });
-    return newObj;
-};
-
 const addData = catchAsync(async (req, res) => {
     const { courseName } = req.body;
     const result = await course.create({ courseName:courseName.toLowerCase() });
@@ -102,12 +94,6 @@ const updateData = catchAsync(async (req, res, next) => {
         },
         params: { id },
     } = req;
-
-    // 2) Filtered out unwanted fields names that are not allowed to be updated
-    const filteredBody = filterObj(
-        req.body,
-        "courseName",
-    );
 
     const result = await course.update(
         {

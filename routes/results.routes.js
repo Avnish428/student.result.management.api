@@ -2,37 +2,38 @@ const router = require("express").Router();
 const resultController = require("../controllers/results.controller");
 const { asyncHandler } = require("../middlewares/asyncHandler");
 const {
-    validateRequestBody,
+  validateRequestBody,
+  validateBasicAuth,
 } = require("../middlewares/validators");
 
 router
-    .route("/results")
-    .get(
-        asyncHandler(resultController.getAllData)
-    )
-    .post(
-        asyncHandler(
-            validateRequestBody(resultController.ResultJoiSchema.AddData)
-        ),
-        asyncHandler(resultController.addData)
-    );
+  .route("/results")
+  .get(
+    asyncHandler(validateBasicAuth()),
+    asyncHandler(resultController.getAllData)
+  )
+  .post(
+    asyncHandler(validateBasicAuth()),
+    asyncHandler(validateRequestBody(resultController.ResultJoiSchema.AddData)),
+    asyncHandler(resultController.addData)
+  );
 
 router
-    .route("/result/:id")
-    .get(
-
-        asyncHandler(resultController.getDataById)
-    )
-    .patch(
-        asyncHandler(
-            validateRequestBody(
-                resultController.ResultJoiSchema.UpdateData
-            )
-        ),
-        asyncHandler(resultController.updateData)
-    )
-    .delete(
-        asyncHandler(resultController.deleteDataById)
-    );
+  .route("/result/:id")
+  .get(
+    asyncHandler(validateBasicAuth()),
+    asyncHandler(resultController.getDataById)
+  )
+  .patch(
+    asyncHandler(validateBasicAuth()),
+    asyncHandler(
+      validateRequestBody(resultController.ResultJoiSchema.UpdateData)
+    ),
+    asyncHandler(resultController.updateData)
+  )
+  .delete(
+    asyncHandler(validateBasicAuth()),
+    asyncHandler(resultController.deleteDataById)
+  );
 
 module.exports = router;
